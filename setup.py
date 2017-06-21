@@ -39,6 +39,7 @@ setup(
     install_requires=[
         'flake8',
         'pytest',
+        'six',
     ],
     license='ISC License',
     zip_safe=False,

@@ -5,3 +5,4 @@ multilint
 pygments
 pytest
 pytest-cov
+six
