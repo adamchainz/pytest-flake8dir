@@ -15,7 +15,8 @@ __version__ = '1.0.0'
 
 
 @pytest.fixture
-def flake8dir(tmpdir):
+def flake8dir(tmpdir_factory):
+    tmpdir = tmpdir_factory.mktemp('flake8dir')
     yield Flake8Dir(tmpdir)
 
 

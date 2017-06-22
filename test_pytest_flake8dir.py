@@ -53,3 +53,12 @@ def test_setup_cfg(flake8dir):
     )
     result = flake8dir.run_flake8()
     assert result.out_lines == []
+
+
+def test_separate_tmpdir(flake8dir, tmpdir):
+    flake8dir.make_py_files(
+        example="""
+        x  = 1
+        """
+    )
+    assert not tmpdir.join('example.py').check()
