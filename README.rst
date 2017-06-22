@@ -15,11 +15,9 @@ A quick example:
 .. code-block:: python
 
     def test_simple_run(flake8dir):
-        flake8dir.make_py_files(
-            example="""
+        flake8dir.make_py_files(example='''
             x  = 1
-            """
-        )
+        ''')
         result = flake8dir.run_flake8()
         assert result.out_lines == [
             './example.py:1:2: E221 multiple spaces before operator'
@@ -62,13 +60,29 @@ assignment:
 
     def test_sample(flake8dir):
         flake8dir.make_py_files(
-            example1="""
+            example1='''
                 x = 1
-            """,
-            example2="""
+            ''',
+            example2='''
                 y = 1
-            """
+            '''
         )
+
+``flake8dir.make_example_py(content)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A shortcut for ``make_py_files(example=content)``, for when you are using a
+single file over and over. This creates just ``example.py``, which is often
+all you need for testing a rule.
+
+For example:
+
+.. code-block:: python
+
+    def test_sample(flake8dir):
+        flake8dir.make_example_py('''
+            x = 1
+        ''')
 
 ``flake8dir.make_setup_cfg(contents)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,10 +97,28 @@ For example, this makes flake8 ignore rule E101:
 .. code-block:: python
 
     def test_sample(flake8dir):
-        flake8dir.make_setup_cfg("""
+        flake8dir.make_setup_cfg('''
             [flake8]
             ignore = E101
-        """)
+        ''')
+
+``flake8dir.make_file(filename, content)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Make an arbitrary file with the given filename - this function is the inner
+implementation for ``make_py_files`` and ``make_setup_cfg``. ``filename`` may
+include directories, like ``mydir/foo.py``, and they will be created.
+``content`` is subject to the same ``textwrap.dedent()`` processing as
+mentioned above.
+
+For example:
+
+.. code-block:: python
+
+    def test_sample(flake8dir):
+        flake8dir.make_file('myfile/foo.py', '''
+            x = 1
+        ''')
 
 ``flake8dir.run_flake8(extra_args=None)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

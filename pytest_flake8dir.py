@@ -31,13 +31,16 @@ class Flake8Dir(object):
             raise TypeError('make_py_files requires at least one keyword argument')
 
         for name, content in kwargs.items():
-            path = self.tmpdir.join(name).new(ext='py')
-            path.dirpath().ensure_dir()
-            fixed_content = dedent(content).strip() + '\n'
-            path.write(fixed_content.encode('utf-8'), 'wb')
+            self.make_file(name + '.py', content)
+
+    def make_example_py(self, content):
+        self.make_py_files(example=content)
 
     def make_setup_cfg(self, content):
-        path = self.tmpdir.join('setup.cfg')
+        self.make_file('setup.cfg', content)
+
+    def make_file(self, filename, content):
+        path = self.tmpdir.join(filename)
         path.dirpath().ensure_dir()
         fixed_content = dedent(content).strip() + '\n'
         path.write(fixed_content.encode('utf-8'), 'wb')
