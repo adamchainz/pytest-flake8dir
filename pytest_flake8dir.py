@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-import os
 import sys
 from contextlib import contextmanager
 from textwrap import dedent
@@ -55,7 +54,7 @@ class Flake8Dir(object):
         if extra_args:
             args.extend(extra_args)
 
-        with tmp_chdir(six.text_type(self.tmpdir)), patch_sys_argv(args), captured_stdout() as stdout:
+        with self.tmpdir.as_cwd(), patch_sys_argv(args), captured_stdout() as stdout:
             flake8_main()
         full_output = stdout.getvalue()
         return Flake8Result(full_output)
@@ -77,14 +76,6 @@ def patch_sys_argv(new_argv):
     sys.argv = new_argv
     yield
     sys.argv = orig
-
-
-@contextmanager
-def tmp_chdir(dir):
-    orig = os.getcwd()
-    os.chdir(dir)
-    yield
-    os.chdir(orig)
 
 
 @contextmanager
