@@ -44,6 +44,11 @@ A pytest fixture that wraps Pytest's built-in ``tmpdir`` fixture
 (`docs <https://docs.pytest.org/en/latest/tmpdir.html>`_), to create a
 temporary directory, allow adding files, and running flake8.
 
+If you're using this to test a flake8 plugin, make sure flake8 is picking up
+your plugin during tests. Normally this is done with a ``setup.py`` entrypoint,
+which makes ``tox`` the easiest way to guarantee this is ready as it will run
+``setup.py install`` on your project before running tests.
+
 ``flake8dir.make_py_files(**kwargs)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
