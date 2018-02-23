@@ -15,7 +15,7 @@ A quick example:
 .. code-block:: python
 
     def test_simple_run(flake8dir):
-        flake8dir.make_py_files(example='''
+        flake8dir.make_example_py('''
             x  = 1
         ''')
         result = flake8dir.run_flake8()
