@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 
+import flake8
 import pytest
 import six
 
@@ -13,6 +14,7 @@ def test_make_py_files_single(flake8dir):
     assert result.out_lines == [
         './example.py:1:2: E221 multiple spaces before operator'
     ]
+    assert result.exit_code == 1
 
 
 def test_make_py_files_double(flake8dir):
@@ -87,6 +89,13 @@ def test_extra_args(flake8dir):
     )
     result = flake8dir.run_flake8(extra_args=['--ignore', 'E221'])
     assert result.out_lines == []
+
+
+def test_extra_args_version(flake8dir):
+    result = flake8dir.run_flake8(extra_args=['--version'])
+    assert len(result.out_lines) == 1
+    assert result.out_lines[0].startswith(flake8.__version__ + ' ')
+    assert result.exit_code == 0
 
 
 def test_separate_tmpdir(flake8dir, tmpdir):

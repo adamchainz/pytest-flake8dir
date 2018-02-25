@@ -48,21 +48,25 @@ class Flake8Dir(object):
         args = [
             'flake8',
             '--jobs', '1',
-            '--exit-zero',
             '.',
         ]
         if extra_args:
             args.extend(extra_args)
 
+        exit_code = 0  # In case --exit-zero has been passed
         with self.tmpdir.as_cwd(), patch_sys_argv(args), captured_stdout() as stdout:
-            flake8_main()
+            try:
+                flake8_main()
+            except SystemExit as exc:
+                exit_code = exc.code
         full_output = stdout.getvalue()
-        return Flake8Result(full_output)
+        return Flake8Result(full_output, exit_code)
 
 
 class Flake8Result(object):
-    def __init__(self, out):
+    def __init__(self, out, exit_code):
         self.out = out
+        self.exit_code = exit_code
 
         lines = out.strip().split('\n')
         if lines[-1] == '':
