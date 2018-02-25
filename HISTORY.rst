@@ -8,6 +8,10 @@ Pending Release
 
 .. Insert new release notes below this line
 
+* The exit code from ``flake8`` is now saved on the ``Flake8Result`` object.
+  Any tests that relied on catching ``SystemExit`` themselves will need
+  refactoring to use the new attribute for their assertions.
+
 1.1.0 (2017-06-23)
 ------------------
 
