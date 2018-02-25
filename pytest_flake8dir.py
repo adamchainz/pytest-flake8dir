@@ -10,7 +10,7 @@ import six
 from flake8.main.cli import main as flake8_main
 
 
-__version__ = '1.1.0'
+__version__ = '1.2.0'
 
 
 @pytest.fixture
