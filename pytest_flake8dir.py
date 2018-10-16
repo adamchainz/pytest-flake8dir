@@ -22,6 +22,7 @@ def flake8dir(tmpdir_factory):
 class Flake8Dir(object):
     def __init__(self, tmpdir):
         self.tmpdir = tmpdir
+        self.make_setup_cfg('[flake8]\n')
 
     def make_py_files(self, *args, **kwargs):
         if len(args) != 0:
@@ -48,6 +49,7 @@ class Flake8Dir(object):
         args = [
             'flake8',
             '--jobs', '1',
+            '--config', 'setup.cfg',
             '.',
         ]
         if extra_args:

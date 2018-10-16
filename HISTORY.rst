@@ -8,6 +8,10 @@ Pending Release
 
 .. Insert new release notes below this line
 
+* A temporary ``setup.cfg`` file is now always created with no options and
+  passed as ``--config``, to avoid flake8 merging in user-specific settings.
+  Use ``make_setup_cfg`` to set the contents of this file.
+
 1.2.0 (2018-02-25)
 ------------------
 
