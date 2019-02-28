@@ -1,7 +1,5 @@
 docutils
 flake8
-modernize
 multilint
 pygments
 pytest
-six

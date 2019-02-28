@@ -1,7 +1,3 @@
-# -*- encoding:utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
-
-import codecs
 import re
 
 from setuptools import setup
@@ -11,7 +7,7 @@ def get_version(filename):
     '''
     Return package version as listed in `__version__` in `filename`.
     '''
-    with codecs.open(filename, 'r', 'utf-8') as fp:
+    with open(filename, 'r') as fp:
         init_py = fp.read()
     return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
 
@@ -19,10 +15,10 @@ def get_version(filename):
 version = get_version('pytest_flake8dir.py')
 
 
-with codecs.open('README.rst', 'r', 'utf-8') as readme_file:
+with open('README.rst', 'r') as readme_file:
     readme = readme_file.read()
 
-with codecs.open('HISTORY.rst', 'r', 'utf-8') as history_file:
+with open('HISTORY.rst', 'r') as history_file:
     history = history_file.read().replace('.. :changelog:', '')
 
 
@@ -39,9 +35,8 @@ setup(
     install_requires=[
         'flake8',
         'pytest',
-        'six',
     ],
-    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
+    python_requires='>=3.4',
     license='ISC License',
     zip_safe=False,
     keywords='pytest, flake8',
@@ -55,8 +50,6 @@ setup(
         'License :: OSI Approved :: ISC License (ISCL)',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
