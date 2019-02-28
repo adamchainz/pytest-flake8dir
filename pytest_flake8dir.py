@@ -7,7 +7,7 @@ import pytest
 from flake8.main.cli import main as flake8_main
 
 
-__version__ = '1.3.0'
+__version__ = '2.0.0'
 
 
 @pytest.fixture
