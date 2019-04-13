@@ -8,13 +8,17 @@ Pending Release
 
 .. Insert new release notes below this line
 
+2.1.0 (2019-04-10)
+------------------
+
+* Run ``flake8`` in a ``subprocess`` rather than trying to get a speed boost by
+  running it in the current process. This is to overcome plugin state not
+  resetting in-process in ``flake8`` 3.7.0+.
+
 2.0.0 (2019-02-28)
 ------------------
 
 * Drop Python 2 support, only Python 3.4+ is supported now.
-* Run ``flake8`` in a ``subprocess`` rather than trying to get a speed boost by
-  running it in the current process. This is to overcome plugin state not
-  resetting in-process in ``flake8`` 3.7.0+.
 
 1.3.0 (2018-10-16)
 ------------------
