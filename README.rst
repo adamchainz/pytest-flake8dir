@@ -32,7 +32,7 @@ Use **pip**:
 
     pip install pytest-flake8dir
 
-Python 3.4+ supported.
+Python 3.5-3.7 supported.
 
 API
 ===
