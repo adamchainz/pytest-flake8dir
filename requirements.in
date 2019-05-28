@@ -3,3 +3,4 @@ flake8
 multilint
 pygments
 pytest
+twine
