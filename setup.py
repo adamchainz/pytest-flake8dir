@@ -30,6 +30,12 @@ setup(
     author="Adam Johnson",
     author_email="me@adamj.eu",
     url="https://github.com/adamchainz/pytest-flake8dir",
+    project_urls={
+        "Changelog": (
+            "https://github.com/adamchainz/pytest-flake8dir"
+            + "/blob/master/HISTORY.rst"
+        )
+    },
     py_modules=["pytest_flake8dir"],
     include_package_data=True,
     install_requires=["flake8", "pytest"],
