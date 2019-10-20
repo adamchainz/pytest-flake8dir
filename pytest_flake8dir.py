@@ -4,9 +4,6 @@ from textwrap import dedent
 import pytest
 
 
-__version__ = "2.1.0"
-
-
 @pytest.fixture
 def flake8dir(tmpdir_factory):
     tmpdir = tmpdir_factory.mktemp("flake8dir")
