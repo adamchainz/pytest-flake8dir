@@ -10,6 +10,12 @@ Pending Release
 
 * Update Python support to 3.5-3.7, as 3.4 has reached its end of life.
 
+* Converted setuptools metadata to configuration file. This meant removing the
+  ``__version__`` attribute from the package. If you want to inspect the
+  installed version, use
+  ``pkg_resources.get_distribution("pytest-flake8dir").version``
+  (`docs <https://setuptools.readthedocs.io/en/latest/pkg_resources.html#getting-or-creating-distributions>`__).
+
 2.1.0 (2019-04-13)
 ------------------
 
