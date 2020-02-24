@@ -33,7 +33,7 @@ Use **pip**:
 
 .. code-block:: sh
 
-    pip install pytest-flake8dir
+    python -m pip install pytest-flake8dir
 
 Python 3.5 to 3.8 supported.
 
