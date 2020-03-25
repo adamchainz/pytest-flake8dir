@@ -10,7 +10,7 @@ def flake8dir(tmpdir_factory):
     yield Flake8Dir(tmpdir)
 
 
-class Flake8Dir(object):
+class Flake8Dir:
     def __init__(self, tmpdir):
         self.tmpdir = tmpdir
         self.make_setup_cfg("[flake8]\n")
@@ -52,7 +52,7 @@ class Flake8Dir(object):
         return Flake8Result(process.stdout.read(), process.returncode)
 
 
-class Flake8Result(object):
+class Flake8Result:
     def __init__(self, out, exit_code):
         self.out = out
         self.exit_code = exit_code
