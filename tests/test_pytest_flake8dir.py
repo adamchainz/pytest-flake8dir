@@ -1,6 +1,5 @@
 import flake8
 import pytest
-import six
 
 
 def test_make_py_files_single(flake8dir):
@@ -46,9 +45,7 @@ def test_make_py_files_no_positional_args(flake8dir):
 def test_make_py_files_requires_at_least_one_kwarg(flake8dir):
     with pytest.raises(TypeError) as excinfo:
         flake8dir.make_py_files()
-    assert "make_py_files requires at least one keyword argument" in str(
-        excinfo.value
-    )
+    assert "make_py_files requires at least one keyword argument" in str(excinfo.value)
 
 
 def test_make_example_py(flake8dir):
