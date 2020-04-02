@@ -2,8 +2,8 @@
 pytest-flake8dir
 ================
 
-.. image:: https://img.shields.io/travis/adamchainz/pytest-flake8dir/master.svg
-        :target: https://travis-ci.org/adamchainz/pytest-flake8dir
+.. image:: https://github.com/adamchainz/pytest-flake8dir/workflows/CI/badge.svg?branch=master
+        :target: https://github.com/adamchainz/pytest-flake8dir/actions?workflow=CI
 
 .. image:: https://img.shields.io/pypi/v/pytest-flake8dir.svg
         :target: https://pypi.python.org/pypi/pytest-flake8dir
