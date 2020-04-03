@@ -3,13 +3,13 @@ pytest-flake8dir
 ================
 
 .. image:: https://github.com/adamchainz/pytest-flake8dir/workflows/CI/badge.svg?branch=master
-        :target: https://github.com/adamchainz/pytest-flake8dir/actions?workflow=CI
+   :target: https://github.com/adamchainz/pytest-flake8dir/actions?workflow=CI
 
 .. image:: https://img.shields.io/pypi/v/pytest-flake8dir.svg
-        :target: https://pypi.python.org/pypi/pytest-flake8dir
+   :target: https://pypi.python.org/pypi/pytest-flake8dir
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-    :target: https://github.com/python/black
+   :target: https://github.com/python/black
 
 A pytest fixture for testing flake8 plugins.
 
