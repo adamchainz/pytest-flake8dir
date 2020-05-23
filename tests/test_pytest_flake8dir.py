@@ -101,9 +101,7 @@ def test_extra_args(flake8dir):
 
 def test_extra_args_version(flake8dir):
     result = flake8dir.run_flake8(extra_args=["--version"])
-    assert len(result.out_lines) == 1
-    assert result.out_lines[0].startswith(flake8.__version__ + " ")
-    assert result.exit_code == 0
+    assert result.out.startswith(flake8.__version__ + " ")
 
 
 def test_separate_tmpdir(flake8dir, tmpdir):
