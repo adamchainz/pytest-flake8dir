@@ -6,7 +6,7 @@ pytest-flake8dir
    :target: https://github.com/adamchainz/pytest-flake8dir/actions?workflow=CI
 
 .. image:: https://img.shields.io/pypi/v/pytest-flake8dir.svg
-   :target: https://pypi.python.org/pypi/pytest-flake8dir
+   :target: https://pypi.org/project/pytest-flake8dir/
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/python/black
