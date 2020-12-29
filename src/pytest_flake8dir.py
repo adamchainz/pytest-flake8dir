@@ -1,7 +1,7 @@
 import os
-from subprocess import Popen, PIPE
-from textwrap import dedent
 from pathlib import Path
+from subprocess import PIPE, Popen
+from textwrap import dedent
 
 import pytest
 
@@ -37,7 +37,7 @@ class Flake8Dir:
         path.dirpath().ensure_dir()
         fixed_content = dedent(content).strip() + "\n"
         p = Path(path)
-        with p.open(mode='wb') as fi:
+        with p.open(mode="wb") as fi:
             fi.write(fixed_content.encode("utf-8"))
 
     def run_flake8(self, extra_args=None, use_nt_paths=False):
@@ -46,17 +46,18 @@ class Flake8Dir:
             args.extend(extra_args)
 
         with Popen(
-                args=args,
-                cwd=str(self.tmpdir),
-                stdout=PIPE,
-                stderr=PIPE,
-                universal_newlines=True) as process:
+            args=args,
+            cwd=str(self.tmpdir),
+            stdout=PIPE,
+            stderr=PIPE,
+            universal_newlines=True,
+        ) as process:
             process.wait()
             process_output = process.stdout.read()
 
             # Note: this will break tests using workarounds unless grandfathered in or opt-in feature flag used.
-            if os.name == 'nt' and use_nt_paths:
-                process_output = process_output.replace('\\', '/')
+            if os.name == "nt" and use_nt_paths:
+                process_output = process_output.replace("\\", "/")
 
         return Flake8Result(process_output, process.returncode)
 

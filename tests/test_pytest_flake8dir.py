@@ -1,4 +1,5 @@
 import os
+
 import flake8
 import pytest
 
@@ -12,7 +13,7 @@ class TestPyTestFlake8Dir:
         )
         result = flake8dir.run_flake8()
 
-        if os.name == 'nt':
+        if os.name == "nt":
             assert result.out_lines == [
                 ".\\example.py:1:2: E221 multiple spaces before operator"
             ]
@@ -30,7 +31,7 @@ class TestPyTestFlake8Dir:
         )
         result = flake8dir.run_flake8(use_nt_paths=True)
 
-        if os.name == 'nt':
+        if os.name == "nt":
             assert result.out_lines == [
                 "./example.py:1:2: E221 multiple spaces before operator"
             ]
@@ -51,7 +52,7 @@ class TestPyTestFlake8Dir:
         )
         result = flake8dir.run_flake8()
 
-        if os.name == 'nt':
+        if os.name == "nt":
             assert result.out_lines == [
                 ".\\example1.py:1:2: E221 multiple spaces before operator",
                 ".\\example2.py:1:2: E221 multiple spaces before operator",
@@ -75,7 +76,9 @@ class TestPyTestFlake8Dir:
     def test_make_py_files_requires_at_least_one_kwarg(self, flake8dir):
         with pytest.raises(TypeError) as excinfo:
             flake8dir.make_py_files()
-        assert "make_py_files requires at least one keyword argument" in str(excinfo.value)
+        assert "make_py_files requires at least one keyword argument" in str(
+            excinfo.value
+        )
 
     def test_make_example_py(self, flake8dir):
         flake8dir.make_example_py(
@@ -85,7 +88,7 @@ class TestPyTestFlake8Dir:
         )
         result = flake8dir.run_flake8()
 
-        if os.name == 'nt':
+        if os.name == "nt":
             assert result.out_lines == [
                 ".\\example.py:1:2: E221 multiple spaces before operator"
             ]
@@ -118,7 +121,7 @@ class TestPyTestFlake8Dir:
         )
         result = flake8dir.run_flake8()
 
-        if os.name == 'nt':
+        if os.name == "nt":
             assert result.out_lines == [
                 ".\\myexample.py:1:2: E221 multiple spaces before operator"
             ]
