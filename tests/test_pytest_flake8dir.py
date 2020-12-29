@@ -1,8 +1,6 @@
 import os
 import flake8
 import pytest
-from pathlib import Path
-import pytest_flake8dir
 
 
 class TestPyTestFlake8Dir:
@@ -74,12 +72,10 @@ class TestPyTestFlake8Dir:
             )
         assert "make_py_files takes no positional arguments" in str(excinfo.value)
 
-
     def test_make_py_files_requires_at_least_one_kwarg(self, flake8dir):
         with pytest.raises(TypeError) as excinfo:
             flake8dir.make_py_files()
         assert "make_py_files requires at least one keyword argument" in str(excinfo.value)
-
 
     def test_make_example_py(self, flake8dir):
         flake8dir.make_example_py(
@@ -113,7 +109,6 @@ class TestPyTestFlake8Dir:
         result = flake8dir.run_flake8()
         assert result.out_lines == []
 
-
     def test_make_file(self, flake8dir):
         flake8dir.make_file(
             "myexample.py",
@@ -141,11 +136,9 @@ class TestPyTestFlake8Dir:
         result = flake8dir.run_flake8(extra_args=["--ignore", "E221"])
         assert result.out_lines == []
 
-
     def test_extra_args_version(self, flake8dir):
         result = flake8dir.run_flake8(extra_args=["--version"])
         assert result.out.startswith(flake8.__version__ + " ")
-
 
     def test_separate_tmpdir(self, flake8dir, tmpdir):
         flake8dir.make_py_files(
