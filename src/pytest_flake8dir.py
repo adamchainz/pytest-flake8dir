@@ -1,5 +1,7 @@
-import subprocess
+import os
+from subprocess import Popen, PIPE
 from textwrap import dedent
+from pathlib import Path
 
 import pytest
 
@@ -34,22 +36,29 @@ class Flake8Dir:
         path = self.tmpdir.join(filename)
         path.dirpath().ensure_dir()
         fixed_content = dedent(content).strip() + "\n"
-        path.write(fixed_content.encode("utf-8"), "wb")
+        p = Path(path)
+        with p.open(mode='wb') as fi:
+            fi.write(fixed_content.encode("utf-8"))
 
-    def run_flake8(self, extra_args=None):
+    def run_flake8(self, extra_args=None, use_nt_paths=False):
         args = ["flake8", "--jobs", "1", "--config", "setup.cfg", "."]
         if extra_args:
             args.extend(extra_args)
 
-        process = subprocess.Popen(
-            args=args,
-            cwd=str(self.tmpdir),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            universal_newlines=True,
-        )
-        process.wait()
-        return Flake8Result(process.stdout.read(), process.returncode)
+        with Popen(
+                args=args,
+                cwd=str(self.tmpdir),
+                stdout=PIPE,
+                stderr=PIPE,
+                universal_newlines=True) as process:
+            process.wait()
+            process_output = process.stdout.read()
+
+            # Note: this will break tests using workarounds unless grandfathered in or opt-in feature flag used.
+            if os.name == 'nt' and use_nt_paths:
+                process_output = process_output.replace('\\', '/')
+
+        return Flake8Result(process_output, process.returncode)
 
 
 class Flake8Result:
