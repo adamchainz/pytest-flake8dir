@@ -2,7 +2,7 @@
 pytest-flake8dir
 ================
 
-.. image:: https://img.shields.io/github/workflow/status/adamchainz/pytest-flake8dir/CI/master?style=for-the-badge
+.. image:: https://img.shields.io/github/workflow/status/adamchainz/pytest-flake8dir/CI/main?style=for-the-badge
    :target: https://github.com/adamchainz/pytest-flake8dir/actions?workflow=CI
 
 .. image:: https://img.shields.io/pypi/v/pytest-flake8dir.svg?style=for-the-badge
