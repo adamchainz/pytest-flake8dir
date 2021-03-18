@@ -2,6 +2,10 @@
 History
 =======
 
+* Use sys.executable to invoke flake8. This ensures that we run the flake8
+  installed to match the current interpreter, in multi-interpreter
+  environments.
+
 2.3.0 (2020-12-13)
 ------------------
 

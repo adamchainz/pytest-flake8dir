@@ -1,4 +1,5 @@
 import subprocess
+import sys
 from textwrap import dedent
 
 import pytest
@@ -37,7 +38,16 @@ class Flake8Dir:
         path.write(fixed_content.encode("utf-8"), "wb")
 
     def run_flake8(self, extra_args=None):
-        args = ["flake8", "--jobs", "1", "--config", "setup.cfg", "."]
+        args = [
+            sys.executable,
+            "-m",
+            "flake8",
+            "--jobs",
+            "1",
+            "--config",
+            "setup.cfg",
+            ".",
+        ]
         if extra_args:
             args.extend(extra_args)
 
