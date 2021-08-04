@@ -22,12 +22,14 @@ A quick example:
 .. code-block:: python
 
     def test_simple_run(flake8dir):
-        flake8dir.make_example_py('''
+        flake8dir.make_example_py(
+            """
             x  = 1
-        ''')
+        """
+        )
         result = flake8dir.run_flake8()
         assert result.out_lines == [
-            './example.py:1:2: E221 multiple spaces before operator'
+            "./example.py:1:2: E221 multiple spaces before operator"
         ]
 
 Installation
@@ -79,12 +81,12 @@ assignment:
 
     def test_sample(flake8dir):
         flake8dir.make_py_files(
-            example1='''
+            example1="""
                 x = 1
-            ''',
-            example2='''
+            """,
+            example2="""
                 y = 1
-            '''
+            """,
         )
 
 ``flake8dir.make_example_py(content: str)``
@@ -99,9 +101,11 @@ For example:
 .. code-block:: python
 
     def test_sample(flake8dir):
-        flake8dir.make_example_py('''
+        flake8dir.make_example_py(
+            """
             x = 1
-        ''')
+        """
+        )
 
 ``flake8dir.make_setup_cfg(contents: str)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -116,10 +120,12 @@ For example, this makes flake8 ignore rule E101:
 .. code-block:: python
 
     def test_sample(flake8dir):
-        flake8dir.make_setup_cfg('''
+        flake8dir.make_setup_cfg(
+            """
             [flake8]
             ignore = E101
-        ''')
+        """
+        )
 
 ``flake8dir.make_file(filename: str, content: str)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -135,9 +141,12 @@ For example:
 .. code-block:: python
 
     def test_sample(flake8dir):
-        flake8dir.make_file('myfile/foo.py', '''
+        flake8dir.make_file(
+            "myfile/foo.py",
+            """
             x = 1
-        ''')
+        """,
+        )
 
 ``flake8dir.run_flake8(extra_args: List[str]=None) -> Flake8Result``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -177,7 +186,7 @@ For example, given a result you can check for a particular line being output:
 .. code-block:: python
 
     result = flake8dir.run_flake8()
-    expected = './example.py:1:2: E221 multiple spaces before operator'
+    expected = "./example.py:1:2: E221 multiple spaces before operator"
     assert expected in result.out_lines
 
 .. _tmpdir: https://docs.pytest.org/en/latest/tmpdir.html
