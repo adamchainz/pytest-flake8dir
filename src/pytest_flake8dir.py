@@ -59,15 +59,17 @@ class Flake8Dir:
             universal_newlines=True,
         )
         process.wait()
-        return Flake8Result(process.stdout.read(), process.returncode)
+        return Flake8Result(
+            out=process.stdout.read(),
+            err=process.stderr.read(),
+            exit_code=process.returncode,
+        )
 
 
 class Flake8Result:
-    def __init__(self, out, exit_code):
+    def __init__(self, out, err, exit_code):
         self.out = out
+        self.out_lines = out.strip().splitlines()
+        self.err = err
+        self.err_lines = err.strip().splitlines()
         self.exit_code = exit_code
-
-        lines = out.strip().split("\n")
-        if lines[-1] == "":
-            lines = lines[:-1]
-        self.out_lines = lines

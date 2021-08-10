@@ -2,6 +2,12 @@
 History
 =======
 
+* Add ``err`` and ``err_lines`` attributes for accessing the stderr of the
+  flake8 process.
+
+  Thanks to Matthew Gamble for the feature request in `Issue #221
+  <https://github.com/adamchainz/django-linear-migrations/issues/221>`__.
+
 2.5.0 (2021-05-10)
 ------------------
 
