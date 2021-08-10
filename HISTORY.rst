@@ -2,6 +2,9 @@
 History
 =======
 
+2.6.0 (2021-08-10)
+------------------
+
 * Add ``err`` and ``err_lines`` attributes for accessing the stderr of the
   flake8 process.
 
