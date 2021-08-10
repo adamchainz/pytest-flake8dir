@@ -89,6 +89,45 @@ def test_make_file(flake8dir):
     ]
 
 
+def test_error_output(flake8dir):
+    flake8dir.make_setup_cfg(
+        """
+        [flake8]
+        extend-select = MC1
+
+        [flake8:local-plugins]
+        extension =
+            MC1 = example:MyChecker1
+        paths = .
+        """
+    )
+    flake8dir.make_example_py(
+        """
+        import warnings
+
+        warnings.warn("This is a warning!", UserWarning)
+
+
+        class MyChecker1:
+            name = "MyChecker1"
+            version = "1"
+
+            def __init__(self, tree):
+                self.tree = tree
+
+            def run(self):
+                if False:
+                    yield
+        """
+    )
+
+    result = flake8dir.run_flake8()
+
+    assert "This is a warning!" in result.err
+    assert result.err_lines[0].endswith("UserWarning: This is a warning!")
+    assert result.err_lines[1] == '  warnings.warn("This is a warning!", UserWarning)'
+
+
 def test_extra_args(flake8dir):
     flake8dir.make_py_files(
         example="""
