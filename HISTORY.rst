@@ -8,6 +8,8 @@ History
   Thanks to Matthew Gamble for the feature request in `Issue #221
   <https://github.com/adamchainz/django-linear-migrations/issues/221>`__.
 
+* Add type hints.
+
 2.5.0 (2021-05-10)
 ------------------
 
