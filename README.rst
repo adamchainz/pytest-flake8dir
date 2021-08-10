@@ -151,13 +151,12 @@ For example:
 ``flake8dir.run_flake8(extra_args: list[str] | None = None) -> Flake8Result``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Runs flake8 in the current process, and returns a ``Flake8Result`` representing
-the results.
+Runs flake8 and returns a ``Flake8Result`` representing the results.
 
 ``extra_args`` may be a list of extra flags to pass to flake8, for example
-passing ``['--ignore', 'E101']`` would achieve the same thing as the above
-``setup.cfg`` example. Note some arguments are already passed to ensure it runs
-in the same process without multiprocessing - see source.
+passing ``["--ignore", "E101"]`` would achieve the same thing as the above
+``setup.cfg`` example. Note some arguments are already passed to ensure flake8
+runs in an isolated manner - see source.
 
 
 ``Flake8Result``
