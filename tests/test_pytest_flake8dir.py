@@ -31,17 +31,6 @@ def test_make_py_files_double(flake8dir):
     }
 
 
-def test_make_py_files_no_positional_args(flake8dir):
-    with pytest.raises(TypeError) as excinfo:
-        flake8dir.make_py_files(
-            1,
-            example="""
-            x  = 1
-        """,
-        )
-    assert "make_py_files takes no positional arguments" in str(excinfo.value)
-
-
 def test_make_py_files_requires_at_least_one_kwarg(flake8dir):
     with pytest.raises(TypeError) as excinfo:
         flake8dir.make_py_files()

@@ -16,9 +16,7 @@ class Flake8Dir:
         self.tmpdir = tmpdir
         self.make_setup_cfg("[flake8]\n")
 
-    def make_py_files(self, *args, **kwargs):
-        if len(args) != 0:
-            raise TypeError("make_py_files takes no positional arguments")
+    def make_py_files(self, **kwargs):
         if len(kwargs) == 0:
             raise TypeError("make_py_files requires at least one keyword argument")
 
