@@ -2,6 +2,9 @@
 History
 =======
 
+2.6.1 (2021-08-11)
+------------------
+
 * Mark as unamintained. Following temporary directory fixture changes in
   pytest, I made a successor library,
   `pytest-flake8-path <https://pypi.org/project/pytest-flake8-path/>`__. I
