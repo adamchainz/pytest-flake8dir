@@ -15,6 +15,15 @@ pytest-flake8dir
    :target: https://github.com/pre-commit/pre-commit
    :alt: pre-commit
 
+----
+
+**Unmaintained:** Following temporary directory fixture changes in pytest, I
+made a successor library,
+`pytest-flake8-path <https://pypi.org/project/pytest-flake8-path/>`__. I
+recommend you use that instead.
+
+----
+
 A pytest fixture for testing flake8 plugins.
 
 A quick example:
